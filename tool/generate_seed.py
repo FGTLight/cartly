@@ -52,7 +52,7 @@ for slug in CATEGORIES:
         images = "array[" + ", ".join(sql(url(i)) for i in p["images"][:4]) + "]::text[]"
         rows.append(
             f"  ({sql(product_slug)}, {sql(p['title'])}, {sql(p['description'])}, "
-            f"{sql(p.get('brand'))}, {sql(slug)}, {price}, {sql(compare)}, "
+            f"{sql(p.get('brand'))}, {sql(slug)}, {price}, {'null' if compare is None else compare}, "
             f"{images}, {p['stock']}, {round(p['rating'], 1)})"
         )
 
@@ -66,8 +66,8 @@ out = [
     "insert into public.products",
     "  (slug, name, description, brand, category_id, price_cents,",
     "   compare_at_cents, images, stock, rating)",
-    "select v.slug, v.name, v.description, v.brand, c.id, v.price_cents,",
-    "       v.compare_at_cents, v.images, v.stock, v.rating",
+    "select v.slug, v.name, v.description, v.brand, c.id, v.price_cents::integer,",
+    "       v.compare_at_cents::integer, v.images, v.stock::integer, v.rating::numeric(2, 1)",
     "from (values",
     ",\n".join(rows),
     ") as v (slug, name, description, brand, category_slug, price_cents,",
