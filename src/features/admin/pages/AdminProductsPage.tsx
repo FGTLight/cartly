@@ -103,14 +103,14 @@ export default function AdminProductsPage() {
                     <div className="flex justify-end gap-1">
                       <Link
                         to={`/admin/products/${p.id}`}
-                        className={buttonClass('ghost', 'icon', 'size-8')}
+                        className={buttonClass('ghost', 'iconSm')}
                         aria-label={`Edit ${p.name}`}
                       >
                         <Pencil className="size-4" aria-hidden />
                       </Link>
                       <button
                         type="button"
-                        className={buttonClass('ghost', 'icon', 'size-8')}
+                        className={buttonClass('ghost', 'iconSm')}
                         aria-label={p.active ? `Hide ${p.name}` : `Show ${p.name}`}
                         onClick={() => toggle.mutate({ id: p.id, active: !p.active })}
                       >
@@ -122,7 +122,7 @@ export default function AdminProductsPage() {
                       </button>
                       <button
                         type="button"
-                        className={buttonClass('ghost', 'icon', 'size-8 hover:text-red-600')}
+                        className={buttonClass('ghost', 'iconSm', 'hover:text-red-600')}
                         aria-label={`Delete ${p.name}`}
                         onClick={() => {
                           if (window.confirm(`Delete “${p.name}”? Past orders keep their copy.`)) {

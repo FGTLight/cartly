@@ -16,6 +16,10 @@ const variants = {
     'dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800',
   ghost: 'text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800',
   danger: 'bg-red-600 text-white hover:bg-red-700 disabled:bg-red-600/50',
+  /** White in both themes, for use on the brand-colored hero. */
+  inverse: 'bg-white text-zinc-900 shadow-sm hover:bg-zinc-100',
+  /** Transparent with white text, also for the brand-colored hero. */
+  onBrand: 'text-white hover:bg-white/10',
 }
 
 const sizes = {
@@ -23,12 +27,17 @@ const sizes = {
   md: 'h-10 px-4 text-sm',
   lg: 'h-12 px-6 text-base',
   icon: 'size-10',
+  iconSm: 'size-8',
 }
 
 export type ButtonVariant = keyof typeof variants
 export type ButtonSize = keyof typeof sizes
 
-/** Shared class names, also used to style links as buttons. */
+/**
+ * Shared class names, also used to style links as buttons. `className` is
+ * for layout (width, margins): classes are not merged, so overriding a
+ * variant's colors or size here is unreliable; add a variant instead.
+ */
 export function buttonClass(
   variant: ButtonVariant = 'primary',
   size: ButtonSize = 'md',

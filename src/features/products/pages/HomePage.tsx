@@ -57,17 +57,13 @@ export default function HomePage() {
             {formatPrice(FREE_SHIPPING_FROM_CENTS)}.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link to="/shop" className={buttonClass(
-                'secondary',
-                'lg',
-                'border-0 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100',
-              )}>
+            <Link to="/shop" className={buttonClass('inverse', 'lg')}>
               Shop now
               <ArrowRight className="size-4" aria-hidden />
             </Link>
             <Link
               to="/shop?sort=price_asc"
-              className={buttonClass('ghost', 'lg', 'text-white hover:bg-white/10 dark:text-white')}
+              className={buttonClass('onBrand', 'lg')}
             >
               <Tag className="size-4" aria-hidden />
               Best prices
