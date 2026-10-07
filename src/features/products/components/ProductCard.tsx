@@ -48,7 +48,11 @@ export function ProductCard({ product, eager }: { product: Product; eager?: bool
         </h3>
         <Rating value={product.rating} />
         <div className="mt-auto flex items-end justify-between gap-2 pt-2">
-          <Price priceCents={product.priceCents} compareAtCents={product.compareAtCents} />
+          <Price
+            priceCents={product.priceCents}
+            compareAtCents={product.compareAtCents}
+            showDiscount={false}
+          />
           <Button
             size="icon"
             variant="secondary"

@@ -108,10 +108,10 @@ export default function HomePage() {
             {categories.map((c) => {
               const Icon = categoryIcons[c.slug] ?? Tag
               return (
-                <li key={c.slug}>
+                <li key={c.slug} className="flex">
                   <Link
                     to={`/shop?category=${c.slug}`}
-                    className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 font-medium transition-colors hover:border-brand-500 hover:text-brand-700 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:text-brand-500"
+                    className="flex w-full items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 font-medium transition-colors hover:border-brand-500 hover:text-brand-700 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:text-brand-500"
                   >
                     <span className="rounded-xl bg-brand-50 p-2 text-brand-600 dark:bg-brand-700/20">
                       <Icon className="size-5" aria-hidden />

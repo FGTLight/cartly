@@ -5,9 +5,11 @@ interface PriceProps {
   priceCents: number
   compareAtCents: number | null
   size?: 'md' | 'lg'
+  /** Hide the "−20%" label (cards show it as a badge instead). */
+  showDiscount?: boolean
 }
 
-export function Price({ priceCents, compareAtCents, size = 'md' }: PriceProps) {
+export function Price({ priceCents, compareAtCents, size = 'md', showDiscount = true }: PriceProps) {
   const discount = discountPercent(priceCents, compareAtCents)
   return (
     <div className="flex flex-wrap items-baseline gap-2">
@@ -20,9 +22,11 @@ export function Price({ priceCents, compareAtCents, size = 'md' }: PriceProps) {
             <span className="sr-only">Was </span>
             {formatPrice(compareAtCents)}
           </s>
-          <span className="text-sm font-medium text-brand-600 dark:text-brand-500">
-            −{discount}%
-          </span>
+          {showDiscount && (
+            <span className="text-sm font-medium text-brand-600 dark:text-brand-500">
+              −{discount}%
+            </span>
+          )}
         </>
       )}
     </div>

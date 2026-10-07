@@ -29,8 +29,11 @@ export function CartDrawer() {
     if (!open && dialog.open) dialog.close?.()
   }, [open])
 
-  // Close when the route changes (e.g. after following a link).
-  useEffect(() => close(), [pathname, close])
+  // Close when the route changes (e.g. after following a link). Braces matter:
+  // with `persist`, the store's setters return a promise, not a cleanup.
+  useEffect(() => {
+    close()
+  }, [pathname, close])
 
   return (
     <dialog
