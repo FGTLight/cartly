@@ -57,7 +57,11 @@ export default function HomePage() {
             {formatPrice(FREE_SHIPPING_FROM_CENTS)}.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link to="/shop" className={buttonClass('secondary', 'lg', 'border-0')}>
+            <Link to="/shop" className={buttonClass(
+                'secondary',
+                'lg',
+                'border-0 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100',
+              )}>
               Shop now
               <ArrowRight className="size-4" aria-hidden />
             </Link>
